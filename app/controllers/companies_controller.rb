@@ -53,7 +53,6 @@ class CompaniesController < ApplicationController
       flash[:alert] = "削除に失敗しました"
       render 'index'
     end
-
   end
 
   private
