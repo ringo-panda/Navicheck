@@ -1,0 +1,18 @@
+<div class="row my-3">
+  <div class="col-sm-6">
+    <h2>イベントカテゴリ編集</h2>
+  </div>
+</div>
+
+<div class="row mb-3 offset-sm-1">
+  <%= form_with model:@event_category do |f| %>
+    <div class="form-row align-items-center">
+      <div class="col-sm-auto">
+        <%= f.text_field :event_category_name, placeholder: "カテゴリ名", class:"form-control" %>
+      </div>
+      <div class="col-sm-auto">
+        <%= f.submit "保存する", class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

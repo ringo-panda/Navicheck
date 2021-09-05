@@ -1,0 +1,43 @@
+<div class="row my-3">
+  <div class="col-sm-6">
+    <h2>業界一覧・追加</h2>
+  </div>
+</div>
+
+<div class="row mb-3 offset-sm-1">
+  <%= form_with model:@industry do |f| %>
+    <div class="form-row align-items-center">
+      <div class="col-sm-auto">
+        <%= f.text_field :industry_name, placeholder: "業界名", class:"form-control" %>
+      </div>
+      <div class="col-sm-auto">
+        <%= f.submit "追加する", class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-sm-10">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th style="width: 10%" class="text-secondary">会社数</th>
+          <th style="width: 60%">業界名</th>
+          <th style="width: 15%"></th>
+          <th style="width: 15%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @industries.each do |post| %>
+          <tr>
+            <td class="text-secondary"><%= post.companies.count %></td>
+            <td><%= link_to post.industry_name, industry_path(post.id) %></td>
+            <td><%= link_to "編集する", edit_industry_path(post.id), class:"btn btn-success" %></td>
+            <td><%= link_to "削除する", industry_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

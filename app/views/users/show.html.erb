@@ -1,0 +1,53 @@
+<div class="row my-3">
+  <div class="col-sm-3">
+    <h2>登録情報</h2>
+  </div>
+</div>
+
+<div class="row attribute-access-type">
+  <div class="col-sm-8">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th style="width: 20%">ニックネーム</th>
+          <td style="width: 80%"><%= current_user.name %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= current_user.email %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <%= link_to "アカウントを編集する", edit_user_registration_path, class:"btn btn-success col-sm-3 offset-sm-2" %>
+</div>
+
+<div class="row my-3">
+  <div class="col-sm-3">
+    <h2>設定</h2>
+  </div>
+</div>
+
+<div class="row my-3">
+  <div class="col-sm-4 offset-sm-1">
+    <h4 class="font-weight-bold">イベントカテゴリ</h4>
+  </div>
+  <%= link_to "設定", event_categories_path, class:"btn btn-outline-dark" %>
+</div>
+
+<div class="row mb-3">
+  <div class="col-sm-4 offset-sm-1">
+    <h4 class="font-weight-bold">選考状況</h4>
+  </div>
+  <%= link_to "設定", selection_statuses_path, class:"btn btn-outline-dark" %>
+</div>
+
+<div class="row mb-3">
+  <div class="col-sm-4 offset-sm-1">
+    <h4 class="font-weight-bold">志望度</h4>
+  </div>
+  <%= link_to "設定", wish_degrees_path, class:"btn btn-outline-dark" %>
+</div>

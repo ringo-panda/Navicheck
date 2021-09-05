@@ -1,0 +1,38 @@
+<div class="row my-3">
+  <div class="col-sm-6">
+    <h2>会社一覧</h2>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <%= link_to "新規登録",new_company_path, class:"btn btn-success col-sm-2" %>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th style="width: 46%" >社名</th>
+          <th style="width: 10%">業界</th>
+          <th style="width: 10%">志望度</th>
+          <th style="width: 10%">選考状況</th>
+          <th style="width: 12%"></th>
+          <th style="width: 12%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @companies.each do |post| %>
+          <tr>
+            <td><%= link_to post.company_name, company_path(post.id) %></td>
+            <td><%= post.industry.industry_name %></td>
+            <td><%= post.wish_degree.wish_degree_name %></td>
+            <td><%= post.selection_status.status_name %></td>
+            <td><%= link_to "編集する", edit_company_path(post.id), class:"btn btn-success" %></td>
+            <td><%= link_to "削除する", company_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

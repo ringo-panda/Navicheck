@@ -1,0 +1,113 @@
+<div class="row my-3">
+  <div class="col-sm-12">
+    <h2><%= @company.company_name %>の詳細</h2>
+  </div>
+</div>
+
+
+<div class="row ">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th style="width:20%">業界</th>
+          <td style="width:80%"><%= @company.industry.industry_name %></td>
+        </tr>
+        <tr>
+          <th>選考状況</th>
+          <td><%= @company.selection_status.status_name %></td>
+        </tr>
+        <tr>
+          <th>志望度</th>
+          <td><%= @company.wish_degree.wish_degree_name %></td>
+        </tr>
+        <tr>
+          <th>企業サイトURL</th>
+          <td><%= link_to @company.company_cite_url, url:@company.company_cite_url  %></td>
+        </tr>
+        <tr>
+          <th>採用サイトURL</th>
+          <td><%= link_to @company.recruit_cite_url, url:@company.recruit_cite_url  %></td>
+        </tr>
+        <tr>
+          <th>採用サイトユーザー名</th>
+          <td><%= @company.recruit_cite_username  %></td>
+        </tr>
+        <tr>
+          <th>採用サイトパスワード</th>
+          <td><%= @company.recruit_cite_password  %></td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td><%= @company.location %></td>
+        </tr>
+        <tr>
+          <th>メモ</th>
+          <td><%= @company.company_memo %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row my-3">
+  <div class="col-sm-12">
+    <h2>職種一覧</h2>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th style="width: 80%">職種</th>
+          <th style="width: 10%"></th>
+          <th style="width: 10%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @company.job_categories.each do |post| %>
+          <tr>
+            <td><%= link_to post.job_category_name, job_category_path(post.id) %></td>
+            <td><%= link_to "編集する", edit_job_category_path(post.id), class:"btn btn-success" %></td>
+            <td><%= link_to "削除する", job_category_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="row my-3">
+  <div class="col-sm-12">
+    <h2><%= @company.company_name %>のイベント一覧</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th style="width: 70%">イベント名</th>
+          <th style="width: 10%">カテゴリ</th>
+          <th style="width: 10%"></th>
+          <th style="width: 10%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @company.events.each do |post| %>
+          <tr>
+            <td><%= link_to post.event_name, event_path(post.id) %></td>
+            <td><%= post.event_category %></td>
+            <td><%= link_to "編集する", edit_event_path(post.id), class:"btn btn-success" %></td>
+            <td><%= link_to "削除する", event_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

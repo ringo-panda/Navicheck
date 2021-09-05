@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  industry_id: 1
+  user_id: 1
+  company_name: MyString
+  company_memo: MyText
+  company_cite_url: MyText
+  recruit_cite_url: MyText
+  recruit_cite_username: MyString
+  recruit_cite_password: MyString
+  selection_status_id: 1
+  wish_degrees_id: 1
+  location: MyString
+
+two:
+  industry_id: 1
+  user_id: 1
+  company_name: MyString
+  company_memo: MyText
+  company_cite_url: MyText
+  recruit_cite_url: MyText
+  recruit_cite_username: MyString
+  recruit_cite_password: MyString
+  selection_status_id: 1
+  wish_degrees_id: 1
+  location: MyString

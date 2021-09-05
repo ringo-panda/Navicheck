@@ -1,0 +1,80 @@
+<div class="row my-3">
+  <div class="col-sm-6">
+    <h2>会社新規登録</h2>
+  </div>
+</div>
+
+
+
+<%= form_with model: @company do |f| %>
+  <%= render "layouts/error_messages", model: @company %>
+
+  <div class="row form-group">
+    <%= f.label :company_name, "会社名", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :company_name, class: "form-control", placeholder: "株式会社ナビチェック" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :company_cite_url, "会社サイトURL", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.url_field :company_cite_url, class: "form-control", placeholder: "http://〇〇〇〇" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :recruit_cite_url, "採用サイトURL", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.url_field :recruit_cite_url, class: "form-control", placeholder: "http://〇〇〇〇" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :recruit_cite_username, "採用サイトユーザー名", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :recruit_cite_username, class: "form-control", placeholder: "a1234567" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :recruit_cite_password, "採用サイトパスワード", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :recruit_cite_password, class: "form-control", placeholder: "00000000" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :location, "所在地", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :location, class: "form-control", placeholder: "東京都中央区御魚町0-0-0" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :company_memo, "メモ", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_area :company_memo, class: "form-control", placeholder: "メモ" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :industry_id, "業界", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.collection_select :industry_id, Industry.where(user_id:current_user.id).order(id: "DESC"), :id, :industry_name, :prompt => "業界を選択", class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :selection_status_id, "選考状況", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.collection_select :selection_status_id, SelectionStatus.where(user_id:current_user.id).order(id: "DESC"), :id, :status_name, :prompt => "選考状況を選択", class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :wish_degree_id, "志望度", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.collection_select :wish_degree_id, WishDegree.where(user_id:current_user.id).order(id: "DESC"), :id, :wish_degree_name, :prompt => "志望度を選択", class: "form-control" %>
+    </div>
+  </div>
+
+
+  <div class="row form-group">
+    <div class="col-sm-3 offset-sm-4">
+      <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
+    </div>
+  </div>
+<% end %>

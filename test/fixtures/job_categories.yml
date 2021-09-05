@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 1
+  event_id: 1
+  user_id: 1
+  job_name: MyString
+  salary: MyString
+  base_salary: MyString
+  allowance: MyText
+  annual_holiday: MyString
+  bonus: MyString
+  salary_increase: MyString
+  overtime_hours: MyText
+  paid_leave: MyText
+  working_place: MyText
+  jobcategories_memo: MyText
+
+two:
+  company_id: 1
+  event_id: 1
+  user_id: 1
+  job_name: MyString
+  salary: MyString
+  base_salary: MyString
+  allowance: MyText
+  annual_holiday: MyString
+  bonus: MyString
+  salary_increase: MyString
+  overtime_hours: MyText
+  paid_leave: MyText
+  working_place: MyText
+  jobcategories_memo: MyText

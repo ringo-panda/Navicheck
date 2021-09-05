@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaviCheck</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <div class="container">
+          <% if user_signed_in? %>
+            <%= link_to "ナビチェック", user_path, class:"navbar-brand" %>
+          <% else %>
+            <%= link_to "ナビチェック", root_path, class:"navbar-brand" %>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "マイページ", user_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "業界一覧", industries_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "企業一覧", companies_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "イベント一覧", events_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_user_registration_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path, class:"nav-link" %>
+              </li>
+            <% end %>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container pt-3">
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <p><%= flash[:notice] %></p>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <p><%= flash[:alert] %></p>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </main>
+    <footer class="mt-5">
+      <div class="container">
+        <div class="row mt-3">
+          <div class="col-sm-6 mx-auto">
+            <p>Copyright © 2021 ringo-panda. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

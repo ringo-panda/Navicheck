@@ -1,0 +1,16 @@
+current directory: /Users/haru/Dropbox/rails/working/NaviCheck/vendor/bundle/gems/racc-1.5.2/ext/racc/cparse
+/Users/haru/.rbenv/versions/2.6.3/bin/ruby -I /Users/haru/.rbenv/versions/2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210902-98951-1l9jdms.rb extconf.rb
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/haru/Dropbox/rails/working/NaviCheck/vendor/bundle/gems/racc-1.5.2/ext/racc/cparse
+make DESTDIR\= clean
+
+current directory: /Users/haru/Dropbox/rails/working/NaviCheck/vendor/bundle/gems/racc-1.5.2/ext/racc/cparse
+make DESTDIR\=
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/haru/Dropbox/rails/working/NaviCheck/vendor/bundle/gems/racc-1.5.2/ext/racc/cparse
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20210902-98951-1ysd6e4/racc
