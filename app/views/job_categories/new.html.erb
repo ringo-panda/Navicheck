@@ -1,2 +1,93 @@
-<h1>JobCategories#new</h1>
-<p>Find me in app/views/job_categories/new.html.erb</p>
+<div class="row my-3">
+  <div class="col-sm-6">
+    <h2>職種新規登録</h2>
+  </div>
+</div>
+
+
+<%= form_with model: @job_category do |f| %>
+  <%= render "layouts/error_messages", model: @job_category %>
+
+  <div class="row form-group">
+    <%= f.label :company_id, "企業名", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.collection_select :company_id, Company.where(user_id:current_user.id).order(id: "DESC"), :id, :company_name, :prompt => "企業名を選択", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :job_name, "職種名", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :job_name, class: "form-control", placeholder: "総合職" %>
+    </div>
+  </div>
+
+
+  <div class="row form-group">
+    <%= f.label :salary, "給料(額面)", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :salary, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :base_salary, "基本給", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :base_salary, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :allowance, "手当", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_area :allowance, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :annual_holiday, "年間休日", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :annual_holiday, class: "form-control", placeholder: "124日" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :bonus, "賞与", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :bonus, class: "form-control", placeholder: "年２回" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :salary_increase, "昇給", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :salary_increase, class: "form-control", placeholder: "年1回" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :overtime_hours, "残業時間", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :overtime_hours, class: "form-control", placeholder: "月平均20時間" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :paid_leave, "残業代", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :paid_leave, class: "form-control", placeholder: "１分単位で支給" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :working_place, "勤務地", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :working_place, class: "form-control", placeholder: "品川駅徒歩５分" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :jobcategories_memo, "メモ", class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_area :jobcategories_memo, class: "form-control", placeholder: "メモ" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-sm-3 offset-sm-4">
+      <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
+    </div>
+  </div>
+<% end %>

@@ -4,6 +4,14 @@
   </div>
 </div>
 
+<div class="row mb-4">
+  <div class="col-sm-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to "編集する", edit_company_path(@company.id), class:"btn btn-success" %>
+      <%= link_to "削除する", company_path(@company.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %>
+    </div>
+  </div>
+</div>
 
 <div class="row ">
   <div class="col-sm-12">
@@ -56,21 +64,25 @@
   </div>
 </div>
 
+<div class="row mb-3">
+  <%= link_to "新規登録",new_job_category_path, class:"btn btn-success col-sm-2" %>
+</div>
+
 
 <div class="row">
   <div class="col-sm-12">
     <table class="table">
       <thead class="thead-light">
         <tr>
-          <th style="width: 80%">職種</th>
-          <th style="width: 10%"></th>
-          <th style="width: 10%"></th>
+          <th style="width: 70%">職種</th>
+          <th style="width: 15%"></th>
+          <th style="width: 15%"></th>
         </tr>
       </thead>
       <tbody>
         <% @company.job_categories.each do |post| %>
           <tr>
-            <td><%= link_to post.job_category_name, job_category_path(post.id) %></td>
+            <td><%= link_to post.job_name, job_category_path(post.id) %></td>
             <td><%= link_to "編集する", edit_job_category_path(post.id), class:"btn btn-success" %></td>
             <td><%= link_to "削除する", job_category_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
           </tr>
@@ -87,22 +99,26 @@
   </div>
 </div>
 
+<div class="row mb-3">
+  <%= link_to "新規登録",new_event_path, class:"btn btn-success col-sm-2" %>
+</div>
+
 <div class="row">
   <div class="col-sm-12">
     <table class="table">
       <thead class="thead-light">
         <tr>
-          <th style="width: 70%">イベント名</th>
-          <th style="width: 10%">カテゴリ</th>
-          <th style="width: 10%"></th>
-          <th style="width: 10%"></th>
+          <th style="width: 60%">イベント名</th>
+          <th style="width: 16%">カテゴリ</th>
+          <th style="width: 12%"></th>
+          <th style="width: 12%"></th>
         </tr>
       </thead>
       <tbody>
         <% @company.events.each do |post| %>
           <tr>
             <td><%= link_to post.event_name, event_path(post.id) %></td>
-            <td><%= post.event_category %></td>
+            <td><%= post.event_category.event_category_name %></td>
             <td><%= link_to "編集する", edit_event_path(post.id), class:"btn btn-success" %></td>
             <td><%= link_to "削除する", event_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
           </tr>

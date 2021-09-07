@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2021_09_04_185707) do
     t.time "start_time"
     t.date "finish_date"
     t.time "finish_time"
+    t.date "limit_date"
+    t.time "limit_time"
     t.text "location"
     t.text "meeting_url"
     t.string "meeting_id"

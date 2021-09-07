@@ -19,11 +19,11 @@
       <tbody>
         <% @companies.each do |post| %>
           <tr>
-            <td><%= link_to post.company_name, industry_path(post.id) %></td>
+            <td><%= link_to post.company_name, company_path(post.id) %></td>
             <td><%= post.wish_degree.wish_degree_name %></td>
-            <td><%= post.wish_degree.selection_status.status_name %></td>
-            <td><%= link_to "編集する", edit_industry_path(post.id), class:"btn btn-success" %></td>
-            <td><%= link_to "削除する", industry_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
+            <td><%= post.selection_status.status_name %></td>
+            <td><%= link_to "編集する", edit_company_path(post.id), class:"btn btn-success" %></td>
+            <td><%= link_to "削除する", company_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
           </tr>
         <% end %>
       </tbody>
