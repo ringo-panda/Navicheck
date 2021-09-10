@@ -1,0 +1,75 @@
+<div class="row my-3">
+  <div class="col-sm-12">
+    <h2><%= @job_category.company.company_name %>の<%= @job_category.job_name %>詳細</h2>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-sm-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to "編集する", edit_job_category_path(@job_category.id), class:"btn btn-success" %>
+      <%= link_to "削除する", job_category_path(@job_category.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %>
+    </div>
+  </div>
+</div>
+
+<div class="row ">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th style="width:20%">職種</th>
+          <td style="width:80%"><%= @job_category.job_name %></td>
+        </tr>
+        <tr>
+          <th>企業名</th>
+          <td><%= @job_category.company.company_name %></td>
+        </tr>
+        <tr>
+          <th>給与(額面)</th>
+          <td><%= @job_category.salary %></td>
+        </tr>
+        <tr>
+          <th>基本給</th>
+          <td><%= @job_category.base_salary %></td>
+        </tr>
+        <tr>
+          <th>手当</th>
+          <td><%= @job_category.allowance %></td>
+        </tr>
+        <tr>
+          <th>年間休日</th>
+          <td><%= @job_category.annual_holiday %></td>
+        </tr>
+        <tr>
+          <th>賞与</th>
+          <td><%= @job_category.annual_holiday %></td>
+        </tr>
+        <tr>
+          <th>昇給</th>
+          <td><%= @job_category.salary_increase %></td>
+        </tr>
+        <tr>
+          <th>残業時間</th>
+          <td><%= @job_category.overtime_hours %></td>
+        </tr>
+        <tr>
+          <th>残業代</th>
+          <td><%= @job_category.overtime_hours %></td>
+        </tr>
+        <tr>
+          <th>残業代</th>
+          <td><%= @job_category.paid_leave %></td>
+        </tr>
+        <tr>
+          <th>勤務地</th>
+          <td><%= @job_category.working_place %></td>
+        </tr>
+        <tr>
+          <th>メモ</th>
+          <td><%= @job_category.jobcategories_memo %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

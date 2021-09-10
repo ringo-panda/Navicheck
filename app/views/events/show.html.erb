@@ -1,2 +1,89 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="row my-3">
+  <div class="col-sm-12">
+    <h2><%= @event.company.company_name %>の<%= @event.event_name %>詳細</h2>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-sm-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to "編集する", edit_event_path(@event.id), class:"btn btn-success" %>
+      <%= link_to "削除する", event_path(@event.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %>
+    </div>
+  </div>
+</div>
+
+<div class="row ">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th style="width:20%">イベント名</th>
+          <td style="width:80%"><%= @event.event_name %></td>
+        </tr>
+        <tr>
+          <th>企業名</th>
+          <td><%= @event.company.company_name %></td>
+        </tr>
+        <tr>
+          <th>カテゴリ</th>
+          <td><%= @event.event_category.event_category_name %></td>
+        </tr>
+        <tr>
+          <th>申し込み期限</th>
+
+          <td>
+            <% if @event.limit_datetime.present? %>
+              <%= @event.limit_datetime.strftime("%Y/%-m/%-d %-H:%M") %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>開始日時</th>
+          <td>
+            <% if @event.start_datetime.present?  %>
+              <%= @event.start_datetime.strftime("%Y/%-m/%-d %-H:%M") %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>終了日時</th>
+          <td>
+            <% if @event.finish_datetime.present? %>
+              <%= @event.finish_datetime.strftime("%Y/%-m/%-d %-H:%M") %>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>場所</th>
+          <td><%= @event.location %></td>
+        </tr>
+        <tr>
+          <th>ミーティングURL</th>
+          <td><%= @event.meeting_url %></td>
+        </tr>
+        <tr>
+          <th>ミーティングID</th>
+          <td><%= @event.meeting_id %></td>
+        </tr>
+        <tr>
+          <th>ミーティングパスワード</th>
+          <td><%= @event.meeting_password %></td>
+        </tr>
+        <tr>
+          <th>持ち物</th>
+          <td><%= @event.belongings %></td>
+        </tr>
+        <tr>
+          <th>服装</th>
+          <td><%= @event.clothes %></td>
+        </tr>
+        <tr>
+          <th>メモ</th>
+          <td><%= @event.event_memo %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

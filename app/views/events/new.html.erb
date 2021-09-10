@@ -30,41 +30,26 @@
   </div>
 
   <div class="row form-group">
-    <%= f.label :limit_date, "申し込み期限日", class:"col-sm-3 col-form-label" %>
+    <%= f.label :limit_datetime, "申し込み期限", class:"col-sm-3 col-form-label" %>
     <div class="col-sm-8">
-      <%= f.date_field :limit_date, class: "form-control" %>
+      <%= f.datetime_field :limit_datetime, class: "form-control" %>
     </div>
   </div>
+
   <div class="row form-group">
-    <%= f.label :limit_time, "申し込み期限時間", class:"col-sm-3 col-form-label" %>
+    <%= f.label :start_datetime, "開始日時", class:"col-sm-3 col-form-label" %>
     <div class="col-sm-8">
-      <%= f.time_field :limit_time, class: "form-control" %>
+      <%= f.datetime_field :start_datetime, class: "form-control" %>
     </div>
   </div>
+
   <div class="row form-group">
-    <%= f.label :start_date, "開始日", class:"col-sm-3 col-form-label" %>
+    <%= f.label :finish_datetime, "終了日時", class:"col-sm-3 col-form-label" %>
     <div class="col-sm-8">
-      <%= f.date_field :start_date, class: "form-control" %>
+      <%= f.datetime_field :finish_datetime, class: "form-control" %>
     </div>
   </div>
-  <div class="row form-group">
-    <%= f.label :start_time, "開始時間", class:"col-sm-3 col-form-label" %>
-    <div class="col-sm-8">
-      <%= f.time_field :start_time, class: "form-control" %>
-    </div>
-  </div>
-  <div class="row form-group">
-    <%= f.label :finish_date, "終了日", class:"col-sm-3 col-form-label" %>
-    <div class="col-sm-8">
-      <%= f.date_field :finish_date, class: "form-control" %>
-    </div>
-  </div>
-  <div class="row form-group">
-    <%= f.label :finish_time, "終了時間", class:"col-sm-3 col-form-label" %>
-    <div class="col-sm-8">
-      <%= f.time_field :finish_time, class: "form-control" %>
-    </div>
-  </div>
+
 
   <div class="row form-group">
     <%= f.label :location, "場所", class:"col-sm-3 col-form-label" %>

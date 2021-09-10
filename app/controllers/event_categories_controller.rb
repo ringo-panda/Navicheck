@@ -1,10 +1,11 @@
 class EventCategoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_event_category, only: [:edit, :update, :correct_user]
+  before_action :set_event_categories, only: [:create, :index, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def create
     @event_category = EventCategory.new(event_category_params)
-    @event_categories = EventCategory.where(user_id:current_user.id).order(id: "DESC")
     if @event_category.save
       flash[:notice] = "投稿に成功しました"
       redirect_to event_categories_path
@@ -15,16 +16,14 @@ class EventCategoriesController < ApplicationController
   end
 
   def index
-    @event_categories = EventCategory.where(user_id:current_user.id).order(id: "DESC")
     @event_category = EventCategory.new
   end
 
   def edit
-    @event_category = EventCategory.find(params[:id])
+
   end
 
   def update
-    @event_category = EventCategory.find(params[:id])
     if @event_category.update(event_category_params)
       flash[:notice] = "保存に成功しました"
       redirect_to event_categories_path
@@ -36,7 +35,6 @@ class EventCategoriesController < ApplicationController
 
   def destroy
     @event_category_destroy = EventCategory.find(params[:id])
-    @event_categories = EventCategory.where(user_id:current_user.id).order(id: "DESC")
     @event_category = EventCategory.new
     if @event_category_destroy.destroy
       flash[:notice] = "削除に成功しました"
@@ -53,10 +51,18 @@ class EventCategoriesController < ApplicationController
   end
 
   def correct_user
-    @event_category = EventCategory.find(params[:id])
     if @event_category.user.id != current_user.id
       flash[:alert] = "このURLは無効です"
       redirect_to event_categories_path
     end
   end
+
+  def set_event_category
+    @event_category = EventCategory.find(params[:id])
+  end
+
+  def set_event_categories
+    @event_categories = EventCategory.where(user_id:current_user.id).order(id: "DESC")
+  end
+
 end
