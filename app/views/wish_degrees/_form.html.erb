@@ -1,0 +1,10 @@
+  <%= form_with model:wish_degree do |f| %>
+    <div class="form-row align-items-center">
+      <div class="col-sm-auto">
+        <%= f.text_field :wish_degree_name, placeholder: "志望度", class:"form-control" %>
+      </div>
+      <div class="col-sm-auto">
+        <%= f.submit "保存する", class:"btn btn-info" %>
+      </div>
+    </div>
+  <% end %>

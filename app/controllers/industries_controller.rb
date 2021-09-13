@@ -16,7 +16,6 @@ class IndustriesController < ApplicationController
 
   def index
     @industries = Industry.where(user_id:current_user.id).order(id: "DESC")
-    @industry = Industry.new
   end
 
   def show
@@ -43,7 +42,7 @@ class IndustriesController < ApplicationController
     @industry_destroy = Industry.find(params[:id])
     @industries = Industry.where(user_id:current_user.id).order(id: "DESC")
     @industry = Industry.new
-    if @industry_destroy.company.count >= 1
+    if @industry_destroy.companies.count >= 1
       flash[:alert] = "この業界は使用されているので削除できません"
       render 'index'
     else

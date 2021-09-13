@@ -4,17 +4,8 @@
   </div>
 </div>
 
-<div class="row mb-3 offset-sm-1">
-  <%= form_with model:@wish_degree do |f| %>
-    <div class="form-row align-items-center">
-      <div class="col-sm-auto">
-        <%= f.text_field :wish_degree_name, placeholder: "志望度", class:"form-control" %>
-      </div>
-      <div class="col-sm-auto">
-        <%= f.submit "追加する", class:"btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
+<div class="row mb-3 ml-1">
+  <%= render 'wish_degrees/form', wish_degree:WishDegree.new %>
 </div>
 
 <div class="row">
@@ -23,10 +14,9 @@
     <table class="table">
       <thead class="thead-light">
         <tr>
+          <th style="width: 15%">使用数</th>
+          <th style="width: 75%">志望度</th>
           <th style="width: 10%"></th>
-          <th style="width: 60%">志望度</th>
-          <th style="width: 15%"></th>
-          <th style="width: 15%"></th>
         </tr>
       </thead>
       <tbody>
@@ -34,10 +24,22 @@
           <tr>
             <td><%= post.companies.count %></td>
             <td><%= post.wish_degree_name %></td>
-            <td><%= link_to "編集する", edit_wish_degree_path(post.id), class:"btn btn-success" %></td>
-            <% if post.companies.count == 0 && @wish_degrees.count >= 2 %>
-            <td><%= link_to "削除する", wish_degree_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
-            <% end %>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-cog"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <%= link_to "編集する", edit_wish_degree_path(post.id), class:"dropdown-item" %>
+                  <% if post.companies.count == 0 && @wish_degrees.count >= 2 %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to "削除する", wish_degree_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"dropdown-item" %>
+                  <% end %>
+                </div>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>

@@ -4,17 +4,8 @@
   </div>
 </div>
 
-<div class="row mb-3 offset-sm-1">
-  <%= form_with model:@industry do |f| %>
-    <div class="form-row align-items-center">
-      <div class="col-sm-auto">
-        <%= f.text_field :industry_name, placeholder: "業界名", class:"form-control" %>
-      </div>
-      <div class="col-sm-auto">
-        <%= f.submit "追加する", class:"btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
+<div class="row mb-3 ml-1">
+  <%= render 'industries/form', industry:Industry.new %>
 </div>
 
 <div class="row">
@@ -24,9 +15,8 @@
       <thead class="thead-light">
         <tr>
           <th style="width: 10%" class="text-secondary">会社数</th>
-          <th style="width: 60%">業界名</th>
-          <th style="width: 15%"></th>
-          <th style="width: 15%"></th>
+          <th style="width: 80%">業界名</th>
+          <th style="width: 10%"></th>
         </tr>
       </thead>
       <tbody>
@@ -34,10 +24,22 @@
           <tr>
             <td class="text-secondary"><%= post.companies.count %></td>
             <td><%= link_to post.industry_name, industry_path(post.id) %></td>
-            <td><%= link_to "編集する", edit_industry_path(post.id), class:"btn btn-success" %></td>
-            <% if post.companies.count == 0 && @industries.count >= 2 %>
-            <td><%= link_to "削除する", industry_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
-            <% end %>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-cog"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <%= link_to "編集する", edit_industry_path(post.id), class:"dropdown-item" %>
+                  <% if post.companies.count == 0 && @industries.count >= 2 %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to "削除する", industry_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"dropdown-item" %>
+                  <% end %>
+                </div>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>

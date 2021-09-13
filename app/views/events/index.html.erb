@@ -5,8 +5,8 @@
   </div>
 </div>
 
-<div class="row mb-3">
-  <%= link_to "新規登録",new_event_path, class:"btn btn-success col-sm-2" %>
+<div class="row mb-3 ml-1">
+  <%= link_to "新規登録",new_event_path, class:"btn btn-info col-sm-2" %>
 </div>
 
 <div class="row">
@@ -14,11 +14,10 @@
     <table class="table">
       <thead class="thead-light">
         <tr>
-          <th style="width: 46%">イベント名</th>
-          <th style="width: 20%">会社名</th>
-          <th style="width: 10%">カテゴリ</th>
-          <th style="width: 12%"></th>
-          <th style="width: 12%"></th>
+          <th style="width: 35%">イベント名</th>
+          <th style="width: 40%">会社名</th>
+          <th style="width: 15%">カテゴリ</th>
+          <th style="width: 10%"></th>
         </tr>
       </thead>
       <tbody>
@@ -27,8 +26,20 @@
             <td><%= link_to post.event_name, event_path(post.id) %></td>
             <td><%= post.company.company_name %></td>
             <td><%= post.event_category.event_category_name %></td>
-            <td><%= link_to "編集する", edit_event_path(post.id), class:"btn btn-success" %></td>
-            <td><%= link_to "削除する", event_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-cog"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <%= link_to "編集する", edit_event_path(post.id), class:"dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "削除する", event_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"dropdown-item" %>
+                </div>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>

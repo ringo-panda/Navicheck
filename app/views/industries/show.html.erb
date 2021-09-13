@@ -9,11 +9,11 @@
     <table class="table">
       <thead class="thead-light">
         <tr>
-          <th style="width: 60%" >社名</th>
+          <th style="width: 65%" >社名</th>
           <th style="width: 10%">志望度</th>
-          <th style="width: 10%">選考状況</th>
+          <th style="width: 15%">選考状況</th>
           <th style="width: 10%"></th>
-          <th style="width: 10%"></th>
+
         </tr>
       </thead>
       <tbody>
@@ -22,8 +22,20 @@
             <td><%= link_to post.company_name, company_path(post.id) %></td>
             <td><%= post.wish_degree.wish_degree_name %></td>
             <td><%= post.selection_status.status_name %></td>
-            <td><%= link_to "編集する", edit_company_path(post.id), class:"btn btn-success" %></td>
-            <td><%= link_to "削除する", company_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-cog"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <%= link_to "編集する", edit_company_path(post.id), class:"dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "削除する", company_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"dropdown-item" %>
+                </div>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>

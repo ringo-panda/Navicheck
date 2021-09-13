@@ -1,0 +1,110 @@
+<%= form_with model: job_category do |f| %>
+  <%= render "layouts/error_messages", model: job_category %>
+
+  <div class="row form-group">
+    <%= f.label :company_id, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-danger text-white">必須</span> 企業名
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.collection_select :company_id, Company.where(user_id:current_user.id).order(id: "DESC"), :id, :company_name, {prompt: "選択してください"}, {class: "custom-select"} %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :job_name, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-danger text-white">必須</span> 職種名
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :job_name, class: "form-control", placeholder: "総合職" %>
+    </div>
+  </div>
+
+
+  <div class="row form-group">
+    <%= f.label :salary, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 給料(額面)
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :salary, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :base_salary, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 基本給
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :base_salary, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :allowance, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 手当
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_area :allowance, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :annual_holiday, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 年間休日
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :annual_holiday, class: "form-control", placeholder: "124日" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :bonus, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 賞与
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :bonus, class: "form-control", placeholder: "年２回" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :salary_increase, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 昇給
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :salary_increase, class: "form-control", placeholder: "年1回" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :overtime_hours, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 残業時間
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :overtime_hours, class: "form-control", placeholder: "月平均20時間" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :paid_leave, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 残業代
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :paid_leave, class: "form-control", placeholder: "１分単位で支給" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :working_place, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 勤務地
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :working_place, class: "form-control", placeholder: "品川駅徒歩５分" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :jobcategories_memo, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> メモ
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_area :jobcategories_memo, class: "form-control", placeholder: "メモ" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-sm-3 offset-sm-4">
+      <%= f.submit "保存する", class: "btn btn-info btn-block" %>
+    </div>
+  </div>
+<% end %>

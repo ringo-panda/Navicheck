@@ -22,7 +22,7 @@
 </div>
 
 <div class="row">
-  <%= link_to "アカウントを編集する", edit_user_registration_path, class:"btn btn-success col-sm-3 offset-sm-2" %>
+  <%= link_to "アカウントを編集する", edit_user_registration_path, class:"btn btn-info col-sm-3 offset-sm-2" %>
 </div>
 
 <div class="row my-3">
@@ -35,19 +35,25 @@
   <div class="col-sm-4 offset-sm-1">
     <h4 class="font-weight-bold">イベントカテゴリ</h4>
   </div>
-  <%= link_to "設定", event_categories_path, class:"btn btn-outline-dark" %>
+  <%= link_to event_categories_path, class:"btn btn-outline-dark" do %>
+    <i class="fas fa-cog"></i>
+  <% end %>
 </div>
 
 <div class="row mb-3">
   <div class="col-sm-4 offset-sm-1">
     <h4 class="font-weight-bold">選考状況</h4>
   </div>
-  <%= link_to "設定", selection_statuses_path, class:"btn btn-outline-dark" %>
+  <%= link_to selection_statuses_path, class:"btn btn-outline-dark" do %>
+    <i class="fas fa-cog"></i>
+  <% end %>
 </div>
 
 <div class="row mb-3">
   <div class="col-sm-4 offset-sm-1">
     <h4 class="font-weight-bold">志望度</h4>
   </div>
-  <%= link_to "設定", wish_degrees_path, class:"btn btn-outline-dark" %>
+  <%= link_to wish_degrees_path, class:"btn btn-outline-dark" do %>
+    <i class="fas fa-cog"></i>
+  <% end %>
 </div>

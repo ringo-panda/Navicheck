@@ -3,7 +3,10 @@ class EventsController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def new
-    @event = Event.new
+    if current_user.companies.count == 0
+      flash[:alert] = "イベントの新規登録には企業の登録が必須です。"
+      redirect_to new_company_path
+    end
   end
 
   def create

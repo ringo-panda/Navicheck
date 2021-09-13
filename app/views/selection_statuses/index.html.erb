@@ -4,17 +4,8 @@
   </div>
 </div>
 
-<div class="row mb-3 offset-sm-1">
-  <%= form_with model:@selection_status do |f| %>
-    <div class="form-row align-items-center">
-      <div class="col-sm-auto">
-        <%= f.text_field :status_name, placeholder: "選考状況", class:"form-control" %>
-      </div>
-      <div class="col-sm-auto">
-        <%= f.submit "追加する", class:"btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
+<div class="row mb-3 ml-1">
+  <%= render 'selection_statuses/form', selection_status:SelectionStatus.new %>
 </div>
 
 <div class="row">
@@ -23,10 +14,9 @@
     <table class="table">
       <thead class="thead-light">
         <tr>
+          <th style="width: 15%">使用数</th>
+          <th style="width: 75%">選考状況</th>
           <th style="width: 10%"></th>
-          <th style="width: 60%">選考状況</th>
-          <th style="width: 15%"></th>
-          <th style="width: 15%"></th>
         </tr>
       </thead>
       <tbody>
@@ -34,10 +24,22 @@
           <tr>
             <td><%= status.companies.count %></td>
             <td><%= status.status_name %></td>
-            <td><%= link_to "編集する", edit_selection_status_path(status.id), class:"btn btn-success" %></td>
-            <% if status.companies.count == 0 && @selection_statuses.count >= 2 %>
-            <td><%= link_to "削除する", selection_status_path(status.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
-            <% end %>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-cog"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <%= link_to "編集する", edit_selection_status_path(status.id), class:"dropdown-item" %>
+                  <% if status.companies.count == 0 && @selection_statuses.count >= 2 %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to "削除する", selection_status_path(status.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"dropdown-item" %>
+                  <% end %>
+                </div>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>

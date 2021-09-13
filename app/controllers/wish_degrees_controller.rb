@@ -38,7 +38,7 @@ class WishDegreesController < ApplicationController
     @wish_degree_destroy = WishDegree.find(params[:id])
     @wish_degrees = WishDegree.where(user_id:current_user.id).order(id: "DESC")
     @wish_degree = WishDegree.new
-    if @wish_degree_destroy.company.count >= 1
+    if @wish_degree_destroy.companies.count >= 1
       flash[:alert] = "この志望度カテゴリは使用されているので削除できません"
       render 'index'
     else

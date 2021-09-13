@@ -1,0 +1,10 @@
+  <%= form_with model:selection_status do |f| %>
+    <div class="form-row align-items-center">
+      <div class="col-sm-auto">
+        <%= f.text_field :status_name, placeholder: "選考状況", class:"form-control" %>
+      </div>
+      <div class="col-sm-auto">
+        <%= f.submit "保存する", class:"btn btn-info" %>
+      </div>
+    </div>
+  <% end %>

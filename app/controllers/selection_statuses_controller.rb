@@ -38,7 +38,7 @@ class SelectionStatusesController < ApplicationController
     @selection_status_destroy = SelectionStatus.find(params[:id])
     @selection_statuses = SelectionStatus.where(user_id:current_user.id).order(id: "DESC")
     @selection_status = SelectionStatus.new
-    if @selection_status_destroy.company.count >= 1
+    if @selection_status_destroy.companies.count >= 1
       flash[:alert] = "この選考状況カテゴリは使用されているので削除できません"
       render 'index'
     else

@@ -1,0 +1,10 @@
+  <%= form_with model:event_category do |f| %>
+    <div class="form-row align-items-center">
+      <div class="col-sm-auto">
+        <%= f.text_field :event_category_name, placeholder: "カテゴリ名", class:"form-control" %>
+      </div>
+      <div class="col-sm-auto">
+        <%= f.submit "保存する", class:"btn btn-info" %>
+      </div>
+    </div>
+  <% end %>

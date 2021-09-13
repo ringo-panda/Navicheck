@@ -1,0 +1,123 @@
+
+<%= form_with model: event do |f| %>
+  <%= render "layouts/error_messages", model: event %>
+
+  <div class="row form-group">
+    <%= f.label :company_id, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-danger text-white">必須</span> 企業名
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.collection_select :company_id, Company.where(user_id:current_user.id).order(id: "DESC"), :id, :company_name, {prompt: "選択してください"}, {class: "custom-select"} %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :event_category_id, class:"col-sm-3 col-form-label"  do %>
+      <span class="badge bg-danger text-white">必須</span> イベントカテゴリ
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.collection_select :event_category_id, EventCategory.where(user_id:current_user.id).order(id: "DESC"), :id, :event_category_name, {prompt: "選択してください"}, {class: "custom-select"} %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :event_name, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-danger text-white">必須</span> イベント名
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :event_name, class: "form-control", placeholder: "夏のインターン" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :limit_datetime, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 申込期限
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.datetime_field :limit_datetime, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :start_datetime, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 開始日時
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.datetime_field :start_datetime, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :finish_datetime, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 終了日時
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.datetime_field :finish_datetime, class: "form-control" %>
+    </div>
+  </div>
+
+
+  <div class="row form-group">
+    <%= f.label :location, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 場所
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :location, class: "form-control", placeholder: "オンライン(ZOOM)" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :meeting_url, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> ミーティングURL
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.url_field :meeting_url, class: "form-control", placeholder: "http://〇〇〇〇" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :meeting_id, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> ミーティングID
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :meeting_id, class: "form-control", placeholder: "a1234567" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :meeting_password, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> ミーティングパスワード
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :meeting_password, class: "form-control", placeholder: "00000000" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :belongings, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 持ち物
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :belongings, class: "form-control", placeholder: "筆記用具" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :clothes, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> 服装
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :clothes, class: "form-control", placeholder: "私服可" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <%= f.label :event_memo, class:"col-sm-3 col-form-label" do %>
+      <span class="badge bg-secondary text-white">任意</span> メモ
+    <% end %>
+    <div class="col-sm-8">
+      <%= f.text_area :event_memo, class: "form-control", placeholder: "メモ" %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-sm-3 offset-sm-4">
+      <%= f.submit "保存する", class: "btn btn-info btn-block" %>
+    </div>
+  </div>
+<% end %>
