@@ -22,14 +22,14 @@ class ApplicationController < ActionController::Base
       SelectionStatus.create(status_name: "面接前", user_id: resource.id, edit_permission: true)
       SelectionStatus.create(status_name: "面接結果待ち", user_id: resource.id, edit_permission: true)
       SelectionStatus.create(status_name: "内定", user_id: resource.id, edit_permission: true)
-      Industry.create(industry_name: "メーカー", user_id: resources.id)
-      Industry.create(industry_name: "商社", user_id: resources.id)
-      Industry.create(industry_name: "小売", user_id: resources.id)
-      Industry.create(industry_name: "金融", user_id: resources.id)
-      Industry.create(industry_name: "サービス", user_id: resources.id)
-      Industry.create(industry_name: "マスコミ", user_id: resources.id)
-      Industry.create(industry_name: "ソフトウェア・通信", user_id: resources.id)
-      Industry.create(industry_name: "官公庁・公社・団体", user_id: resources.id)
+      Industry.create(industry_name: "メーカー", user_id: resource.id)
+      Industry.create(industry_name: "商社", user_id: resource.id)
+      Industry.create(industry_name: "小売", user_id: resource.id)
+      Industry.create(industry_name: "金融", user_id: resource.id)
+      Industry.create(industry_name: "サービス", user_id: resource.id)
+      Industry.create(industry_name: "マスコミ", user_id: resource.id)
+      Industry.create(industry_name: "ソフトウェア・通信", user_id: resource.id)
+      Industry.create(industry_name: "官公庁・公社・団体", user_id: resource.id)
     end
     user_path # ログイン後に遷移するpathを設定
   end

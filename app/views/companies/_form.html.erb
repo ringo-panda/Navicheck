@@ -1,10 +1,10 @@
 
-<%= form_with model: @company do |f| %>
-  <%= render "layouts/error_messages", model: @company %>
+<%= form_with model: company do |f| %>
+  <%= render "layouts/error_messages", model: company %>
 
   <div class="row form-group">
     <%= f.label :company_name, class:"col-sm-3 col-form-label" do %>
-      
+      <span class="badge bg-danger">必須</span> 会社名
     <% end %>
     <div class="col-sm-8">
       <%= f.text_field :company_name, class: "form-control", placeholder: "株式会社ナビチェック" %>
