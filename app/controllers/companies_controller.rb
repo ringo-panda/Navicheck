@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company, only: [:show, :edit, :update, :correct_user]
+  before_action :set_company, only: [:show, :edit, :update]
   before_action :set_companies, only: [:create, :index, :destroy]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
@@ -57,6 +57,7 @@ class CompaniesController < ApplicationController
   end
 
   def correct_user
+    @company = Company.find(params[:id])
     if @company.user.id != current_user.id
       flash[:alert] = "このURLは無効です"
       redirect_to companies_path

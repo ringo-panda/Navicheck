@@ -38,6 +38,10 @@ class WishDegreesController < ApplicationController
     @wish_degree_destroy = WishDegree.find(params[:id])
     @wish_degrees = WishDegree.where(user_id:current_user.id).order(id: "DESC")
     @wish_degree = WishDegree.new
+    if @wish_degree_destroy.company.count >= 1
+      flash[:alert] = "この志望度カテゴリは使用されているので削除できません"
+      render 'index'
+    else
     if @wish_degree_destroy.destroy
       flash[:notice] = "削除に成功しました"
       redirect_to wish_degrees_path
@@ -45,6 +49,7 @@ class WishDegreesController < ApplicationController
       flash[:alert] = "削除に失敗しました"
       render 'index'
     end
+  end
 
   end
 

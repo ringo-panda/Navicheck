@@ -19,10 +19,12 @@
 
 <div class="row">
   <div class="col-sm-10">
+    <p class="text-danger">イベントカテゴリは使用されている場合削除できません。また、イベントカテゴリは１つ以上存在している必要があります。</p>
     <table class="table">
       <thead class="thead-light">
         <tr>
-          <th style="width: 70%">カテゴリ名</th>
+          <th style="width: 10%"></th>
+          <th style="width: 60%">カテゴリ名</th>
           <th style="width: 15%"></th>
           <th style="width: 15%"></th>
         </tr>
@@ -30,9 +32,10 @@
       <tbody>
         <% @event_categories.each do |category| %>
           <tr>
+            <td><%= category.event.count %></td>
             <td><%= category.event_category_name %></td>
             <td><%= link_to "編集する", edit_event_category_path(category.id), class:"btn btn-success" %></td>
-            <% if category.edit_permission == true %>
+            <% if category.event.count == 0 && @event_categories.count >= 2 %>
             <td><%= link_to "削除する", event_category_path(category.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
             <% end %>
           </tr>

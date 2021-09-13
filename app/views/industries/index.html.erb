@@ -19,6 +19,7 @@
 
 <div class="row">
   <div class="col-sm-10">
+    <p class="text-danger">業界名は使用されている場合削除できません。また、業界名は１つ以上存在している必要があります。</p>
     <table class="table">
       <thead class="thead-light">
         <tr>
@@ -34,7 +35,9 @@
             <td class="text-secondary"><%= post.companies.count %></td>
             <td><%= link_to post.industry_name, industry_path(post.id) %></td>
             <td><%= link_to "編集する", edit_industry_path(post.id), class:"btn btn-success" %></td>
+            <% if post.companies.count == 0 && @industries.count >= 2 %>
             <td><%= link_to "削除する", industry_path(post.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

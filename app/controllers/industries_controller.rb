@@ -43,14 +43,18 @@ class IndustriesController < ApplicationController
     @industry_destroy = Industry.find(params[:id])
     @industries = Industry.where(user_id:current_user.id).order(id: "DESC")
     @industry = Industry.new
-    if @industry_destroy.destroy
-      flash[:notice] = "削除に成功しました"
-      redirect_to industries_path
-    else
-      flash[:alert] = "削除に失敗しました"
+    if @industry_destroy.company.count >= 1
+      flash[:alert] = "この業界は使用されているので削除できません"
       render 'index'
+    else
+      if @industry_destroy.destroy
+        flash[:notice] = "削除に成功しました"
+        redirect_to industries_path
+      else
+        flash[:alert] = "削除に失敗しました"
+        render 'index'
+      end
     end
-
   end
 
   private

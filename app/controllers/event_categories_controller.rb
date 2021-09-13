@@ -1,6 +1,6 @@
 class EventCategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_event_category, only: [:edit, :update, :correct_user]
+  before_action :set_event_category, only: [:edit, :update]
   before_action :set_event_categories, only: [:create, :index, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -36,12 +36,17 @@ class EventCategoriesController < ApplicationController
   def destroy
     @event_category_destroy = EventCategory.find(params[:id])
     @event_category = EventCategory.new
-    if @event_category_destroy.destroy
-      flash[:notice] = "削除に成功しました"
-      redirect_to event_categories_path
-    else
-      flash[:alert] = "削除に失敗しました"
+    if @event_category_destroy.event.count >= 1
+      flash[:alert] = "このイベントカテゴリは使用されているので削除できません"
       render 'index'
+    else
+      if @event_category_destroy.destroy
+        flash[:notice] = "削除に成功しました"
+        redirect_to event_categories_path
+      else
+        flash[:alert] = "削除に失敗しました"
+        render 'index'
+      end
     end
   end
 
@@ -51,6 +56,7 @@ class EventCategoriesController < ApplicationController
   end
 
   def correct_user
+    @event_category = EventCategory.find(params[:id])
     if @event_category.user.id != current_user.id
       flash[:alert] = "このURLは無効です"
       redirect_to event_categories_path
