@@ -17,9 +17,9 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <div class="container">
           <% if user_signed_in? %>
-            <%= link_to "ナビチェック", user_path, class:"navbar-brand" %>
+            <%= link_to "NaviCheck", user_path, class:"navbar-brand" %>
           <% else %>
-            <%= link_to "ナビチェック", root_path, class:"navbar-brand" %>
+            <%= link_to "NaviCheck", root_path, class:"navbar-brand" %>
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,26 +29,34 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to " マイページ", user_path, class:"nav-link" %>
+                <%= link_to user_path, class:"nav-link active" do %>
+                  <i class="fas fa-user"></i> マイページ
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to " 業界一覧", industries_path, class:"nav-link" %>
+                <%= link_to industries_path, class:"nav-link active" do %>
+                  <i class="fas fa-industry"></i> 業界一覧
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to " 企業一覧", companies_path, class:"nav-link" %>
+                <%= link_to companies_path, class:"nav-link active" do %>
+                  <i class="fas fa-building"></i> 企業一覧
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to " イベント一覧", events_path, class:"nav-link" %>
+                <%= link_to events_path, class:"nav-link active" do %>
+                  <i class="fas fa-calendar-check"></i> イベント一覧
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
+                <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"nav-link active" %>
               </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to " 新規登録", new_user_registration_path, class:"nav-link" %>
+                <%= link_to " 新規登録", new_user_registration_path, class:"nav-link active" %>
               </li>
               <li class="nav-item">
-                <%= link_to " ログイン", new_user_session_path, class:"nav-link" %>
+                <%= link_to " ログイン", new_user_session_path, class:"nav-link active" %>
               </li>
             <% end %>
             </ul>
