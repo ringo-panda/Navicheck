@@ -63,4 +63,4 @@ gem 'byebug'
 
 gem 'devise'
 
-
+gem 'rails-i18n'

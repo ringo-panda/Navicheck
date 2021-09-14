@@ -1,6 +1,28 @@
 ja:
   activerecord:
+    models:
+      company: 企業
+      event_category: イベントカテゴリ
+      event: イベント
+      industry: 業界
+      job_category: 職種
+      selection_status: 選考状況
+      user: ユーザー
+      wish_degree: 志望度
     attributes:
+      company:
+        industry_id: 業界
+        user_id: ユーザー
+        company_name: 企業名
+        company_memo: メモ
+        company_cite_url: 企業サイトURL
+        recruit_cite_url: 採用サイトURL
+        recruit_cite_username: 採用サイトユーザー名
+        recruit_cite_password: 採用サイトパスワード
+        selection_status_id: 選考状況
+        wish_degree_id: 志望度
+        location: 所在地
+
       user:
         email: メールアドレス
         password: パスワード
