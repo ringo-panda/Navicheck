@@ -5,6 +5,7 @@ class CompaniesController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def new
+    @company = Company.new
     if current_user.industries.count == 0
       flash[:alert] = "企業の新規登録には業界の登録が必須です。"
       redirect_to industries_path

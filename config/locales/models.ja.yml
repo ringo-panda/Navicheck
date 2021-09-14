@@ -11,6 +11,7 @@ ja:
       wish_degree: 志望度
     attributes:
       company:
+        industry: 業界
         industry_id: 業界
         user_id: ユーザー
         company_name: 企業名
@@ -20,11 +21,62 @@ ja:
         recruit_cite_username: 採用サイトユーザー名
         recruit_cite_password: 採用サイトパスワード
         selection_status_id: 選考状況
+        selection_status: 志望度
         wish_degree_id: 志望度
+        wish_degree: 志望度
         location: 所在地
-
+      event_category:
+        event_category_name: イベントカテゴリ名
+        user_id: ユーザー
+        edit_permission: 編集権限
+      event:
+        company_id: 企業
+        company: 企業
+        user_id: ユーザー
+        event_category_id: イベントカテゴリ
+        event_category: イベントカテゴリ
+        event_name: イベント名
+        start_datetime: 開始日時
+        finish_datetime: 終了日時
+        limit_datetime: 申込期限
+        location: 場所
+        meeting_url: ミーティングURL
+        meeting_id: ミーティングID
+        meeting_password: ミーティングパスワード
+        belongings: 持ち物
+        clothes: 服装
+        event_memo: メモ
+      industry:
+        industry_name: 業界名
+        user_id: ユーザー
+      job_category:
+        company_id: 企業
+        company: 企業
+        event_id: イベント
+        event: イベント
+        user_id: ユーザー
+        job_name: 職種名
+        salary: 給料(額面)
+        base_salary: 基本給
+        allowance: 手当
+        annual_holiday: 年間休日
+        bonus: 賞与
+        salary_increase: 昇給
+        overtime_hours: 残業時間
+        paid_leave: 残業代
+        working_place: 勤務地
+        jobcategories_memo: メモ
+      selection_status:
+        status_name: 選考状況
+        user_id: ユーザー
+        edit_permission: 編集権限
       user:
+        name: ニックネーム
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
+      wish_degree:
+        wish_degree_name: 志望度
+        user_id: ユーザー
+        edit_permission: 編集権限

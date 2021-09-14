@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :event_categories, dependent: :destroy
   has_many :wish_degrees, dependent: :destroy
   has_many :selection_statuses, dependent: :destroy
+
+    validates :name, presence: true, length: { in: 1..50 }
 end
