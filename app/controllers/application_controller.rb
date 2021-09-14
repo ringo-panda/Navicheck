@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインしました。ナビチェックへようこそ。"
     if resource.sign_in_count == 1
       WishDegree.create(wish_degree_name: "高", user_id: resource.id, edit_permission: true)
       WishDegree.create(wish_degree_name: "中", user_id: resource.id, edit_permission: true)
@@ -35,6 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトしました。御疲れ様でした。ゆっくりお休みください。"
     root_path # ログアウト後に遷移するpathを設定
   end
 
