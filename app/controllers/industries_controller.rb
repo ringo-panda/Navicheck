@@ -9,7 +9,7 @@ class IndustriesController < ApplicationController
       flash[:notice] = "投稿に成功しました"
       redirect_to industries_path
     else
-      flash[:alert] = "投稿に成功しました"
+      flash[:alert] = "投稿に失敗しました"
       render 'index'
     end
   end

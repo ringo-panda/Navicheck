@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     flash[:notice] = "ログインしました。ナビチェックへようこそ。"
-    if resource.sign_in_count == 1
+    if resource.wish_degrees.count == 0 && resource.selection_statuses.count == 0 && resource.industries.count == 0 && resource.sign_in_count == 1
       WishDegree.create(wish_degree_name: "高", user_id: resource.id, edit_permission: true)
       WishDegree.create(wish_degree_name: "中", user_id: resource.id, edit_permission: true)
       WishDegree.create(wish_degree_name: "低", user_id: resource.id, edit_permission: true)
