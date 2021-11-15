@@ -39,11 +39,11 @@
         </tr>
         <tr>
           <th>企業サイトURL</th>
-          <td><%= link_to @company.company_cite_url, url:@company.company_cite_url  %></td>
+          <td><%= link_to nil, @company.company_cite_url, target:"_blank", rel:"noopener noreferrer" %></td>
         </tr>
         <tr>
           <th>採用サイトURL</th>
-          <td><%= link_to @company.recruit_cite_url, url:@company.recruit_cite_url  %></td>
+          <td><%= link_to nil, @company.recruit_cite_url, target:"_blank", rel:"noopener noreferrer"  %></td>
         </tr>
         <tr>
           <th>採用サイトユーザー名</th>

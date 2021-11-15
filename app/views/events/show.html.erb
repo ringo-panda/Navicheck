@@ -67,7 +67,7 @@
         </tr>
         <tr>
           <th>ミーティングURL</th>
-          <td><%= @event.meeting_url %></td>
+          <td><%= link_to nil, @event.meeting_url,target:"_blank", rel:"noopener noreferrer" %></td>
         </tr>
         <tr>
           <th>ミーティングID</th>
